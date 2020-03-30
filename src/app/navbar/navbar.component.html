@@ -1,13 +1,12 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-    <a class="navbar-brand" href="#">Angular-on-FHIR</a>
+    <a class="navbar-brand" routerLink="">Angular-on-FHIR</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav">
-            <a class="nav-item nav-link active" routerLink="">Home</a>
-            <a class="nav-item nav-link" [routerLink]="['/patient', 1]">Patient</a>
-            <a class="nav-item nav-link" [routerLink]="['/encounter', 1]">Encounter</a>
+            <a class="nav-item nav-link" [routerLink]="['/patient', 1]" routerLinkActive="active">Patient</a>
+            <a class="nav-item nav-link" [routerLink]="['/encounter', 1]" routerLinkActive="active">Encounter</a>
         </div>
     </div>
 </nav>
