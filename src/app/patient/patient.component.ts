@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FhirService } from '../fhir.service'; 
+import { ActivatedRoute } from '@angular/router';
+
+import { FhirService } from '../fhir.service';
 
 @Component({
   selector: 'app-patient',
@@ -8,21 +10,19 @@ import { FhirService } from '../fhir.service';
 })
 export class PatientComponent implements OnInit {
 
-  private patient
+  patient: any
 
-  constructor(fhir: FhirService) {
-    this.patient = fhir.getPatient()
-  }
-
-  getPatient() {
-    return this.patient
-  }
-
-  getPatientName() {
-    return this.patient.name
-  }
+  constructor(
+    private route: ActivatedRoute,
+    private fhir: FhirService
+  ) { }
 
   ngOnInit(): void {
+    this.route.paramMap.subscribe(
+      params => {
+        this.patient = this.fhir.getPatient(+params.get('id'))
+      }
+    )
   }
 
 }

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+
 import { FhirService } from '../fhir.service';
 
 @Component({
@@ -8,21 +10,19 @@ import { FhirService } from '../fhir.service';
 })
 export class EncounterComponent implements OnInit {
 
-  private encounter
+  encounter: any
 
-  constructor(fhir: FhirService) {
-    this.encounter = fhir.getEncounter()
-  }
-
-  getEncounter() {
-    return this.encounter
-  }
-
-  getEncounterType() {
-    return this.encounter.type
-  }
+  constructor(
+    private route: ActivatedRoute,
+    private fhir: FhirService
+  ) { }
 
   ngOnInit(): void {
+    this.route.paramMap.subscribe(
+      params => {
+        this.encounter = this.fhir.getEncounter(+params.get('id'))
+      }
+    )
   }
 
 }

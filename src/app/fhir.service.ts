@@ -7,14 +7,16 @@ export class FhirService {
 
   constructor() { }
 
-  public getPatient() {
+  public getPatient(patient: number) {
     return {
+      id: patient,
       name: 'John Doe'
     }
   }
 
-  public getEncounter() {
+  public getEncounter(encounter: number) {
     return {
+      id: encounter,
       type: 'Inpatient'
     }
   }
